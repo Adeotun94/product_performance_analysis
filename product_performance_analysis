@@ -1,0 +1,29 @@
+Product Performance Analysis
+
+queries;
+Total Revenue per Product:
+
+SELECT p.product_name,
+       SUM(s.quantity * p.price) AS total_revenue
+FROM products p
+JOIN sales s ON p.product_id = s.product_id
+GROUP BY p.product_name
+ORDER BY total_revenue DESC;
+
+Total Units Sold per Product
+
+SELECT p.product_name,
+       SUM(s.quantity) AS total_units_sold
+FROM products p
+JOIN sales s ON p.product_id = s.product_id
+GROUP BY p.product_name
+ORDER BY total_units_sold DESC;
+
+Revenue by Category
+
+SELECT p.category,
+       SUM(s.quantity * p.price) AS category_revenue
+FROM products p
+JOIN sales s ON p.product_id = s.product_id
+GROUP BY p.category
+ORDER BY category_revenue DESC;
